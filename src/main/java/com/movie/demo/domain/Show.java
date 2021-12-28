@@ -48,8 +48,9 @@ public class Show implements Serializable {
 	@JsonManagedReference
 	private Movie movie;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne( optional = false)
 	@JoinColumn(name = "cinemaHallid",nullable = false)
+	@JsonManagedReference
 	private CinemaHall cinemaHall;
 	
 	@OneToMany(mappedBy = "show", cascade = CascadeType.ALL)

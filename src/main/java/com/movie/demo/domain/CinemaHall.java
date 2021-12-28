@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -43,6 +44,7 @@ public class CinemaHall implements Serializable {
 	private Cinema cinema;
 
 	@OneToMany(mappedBy = "cinemaHall", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private Set<Show> shows;
 
 	@OneToMany(mappedBy = "cinemaHall", cascade = CascadeType.ALL)
