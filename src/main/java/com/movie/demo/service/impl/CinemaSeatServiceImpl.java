@@ -44,15 +44,19 @@ public class CinemaSeatServiceImpl implements CinemaSeatService{
 	}
 
 	@Override
-	public CinemaSeat updateSeat(CinemaSeat updatedSeat, Integer cinemaSeatId) {
+	public CinemaSeat updateSeat(CinemaSeatDTO updatedSeatDto, Integer cinemaSeatId) {
 		return this.cinemaSeatRepository.findById(cinemaSeatId).map(cinemaSeat -> {
-			cinemaSeat.setSeatnumber(updatedSeat.getCinemaSeatId());
-			cinemaSeat.setType(updatedSeat.getType());
-			cinemaSeat.setCinemaHall(updatedSeat.getCinemaHall());
+			cinemaSeat.setSeatnumber(updatedSeatDto.getSeatnumber());
+			cinemaSeat.setType(updatedSeatDto.getType());
+			cinemaSeat.setCinemaHall(cinemaSeat.getCinemaHall());
 			return this.cinemaSeatRepository.save(cinemaSeat);
 		}).orElseGet(() -> {
-			updatedSeat.getCinemaSeatId();
-			return cinemaSeatRepository.save(updatedSeat);
+			CinemaSeat cinemaSeat=new CinemaSeat();
+			cinemaSeat.setCinemaSeatId(cinemaSeatId);
+			cinemaSeat.setSeatnumber(updatedSeatDto.getSeatnumber());
+			cinemaSeat.setType(updatedSeatDto.getType());
+			cinemaSeat.setCinemaHall(this.cinemaHallRepository.findById(updatedSeatDto.getCinemaHall().getCinemaHallId()).get());
+			return cinemaSeatRepository.save(cinemaSeat);
 		});
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,8 +40,15 @@ public class CinemaSeatController {
 	}
 	
 	@PostMapping("/addSeat")
-	public ResponseEntity<?> addCinemaHall(@RequestBody CinemaSeatDTO cinemaSeatDTO) throws Exception {
+	public ResponseEntity<?> addCinemaSeat(@RequestBody CinemaSeatDTO cinemaSeatDTO) throws Exception {
 		CinemaSeat  cinemaSeat=this.cinemaSeatService.addSeat(cinemaSeatDTO);
 		return ResponseEntity.status(HttpStatus.OK).body(cinemaSeat);
 	}
+	
+	@PutMapping("/updateSeat/{cinemaseatid}")
+	public ResponseEntity<?> updateCinemaSeat(@RequestBody CinemaSeatDTO cinemaSeatDTO,@PathVariable Integer cinemaseatid) throws Exception {
+		CinemaSeat  cinemaSeat=this.cinemaSeatService.updateSeat(cinemaSeatDTO,cinemaseatid);
+		return ResponseEntity.status(HttpStatus.OK).body(cinemaSeat);
+	}
+	
 }

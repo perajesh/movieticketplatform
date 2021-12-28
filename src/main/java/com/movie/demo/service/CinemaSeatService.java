@@ -13,7 +13,7 @@ public interface CinemaSeatService {
 
 	CinemaSeat addSeat(CinemaSeatDTO cinemaSeatDTO);
 
-	CinemaSeat updateSeat(CinemaSeat updatedSeat, Integer cinemaSeatId);
+	CinemaSeat updateSeat(CinemaSeatDTO cinemaSeatDTO, Integer cinemaSeatId);
 
 	void deleteSeatById(Integer cinemaSeatId);
 }
