@@ -7,6 +7,7 @@ public class CinemaHallDTO {
 	private String name;
 
 	private Integer totalSeats;
+	private Integer cinemaHallId;
 	
 	private CinemaDTO cinema;
 
@@ -32,6 +33,14 @@ public class CinemaHallDTO {
 
 	public void setCinema(CinemaDTO cinema) {
 		this.cinema = cinema;
+	}
+
+	public Integer getCinemaHallId() {
+		return cinemaHallId;
+	}
+
+	public void setCinemaHallId(Integer cinemaHallId) {
+		this.cinemaHallId = cinemaHallId;
 	}
 	
 	

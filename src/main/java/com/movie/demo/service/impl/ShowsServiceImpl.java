@@ -13,8 +13,11 @@ import org.springframework.stereotype.Service;
 
 import com.movie.demo.domain.CinemaSeat;
 import com.movie.demo.domain.Show;
+import com.movie.demo.repository.CinemaHallRepository;
+import com.movie.demo.repository.MovieRepository;
 import com.movie.demo.repository.ShowRepository;
 import com.movie.demo.service.ShowService;
+import com.movie.demo.service.dto.ShowDTO;
 
 @Service("showService")
 @Transactional
@@ -22,6 +25,12 @@ public class ShowsServiceImpl implements ShowService {
 
 	@Autowired
 	ShowRepository showRepository;
+	
+	@Autowired
+	MovieRepository movieRepository;
+	
+	@Autowired
+	CinemaHallRepository cinemaHallRepository;
 
 	@Override
 	public List<Show> getAllShows() {
@@ -35,8 +44,14 @@ public class ShowsServiceImpl implements ShowService {
 	}
 
 	@Override
-	public Show addShow(Show newShow) {
-		return this.showRepository.save(newShow);
+	public Show addShow(ShowDTO showDto) {
+		Show show=new Show();
+		show.setDate(showDto.getDate());
+		show.setStartTime(showDto.getStartTime());
+		show.setEndTime(showDto.getEndTime());
+		show.setMovie(this.movieRepository.findById(showDto.getMovie().getMovieId()).get());
+		show.setCinemaHall(this.cinemaHallRepository.findById(showDto.getCinemaHall().getCinemaHallId()).get());
+		return this.showRepository.save(show);
 	}
 
 	@Override
@@ -67,5 +82,12 @@ public class ShowsServiceImpl implements ShowService {
 				.filter(show -> show.getDate().isAfter(startDate) && show.getDate().isBefore(endDate))
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public void deleteShowById(Integer showid) {
+		// TODO Auto-generated method stub
+		this.showRepository.deleteById(showid);
+	}
+	
 
 }

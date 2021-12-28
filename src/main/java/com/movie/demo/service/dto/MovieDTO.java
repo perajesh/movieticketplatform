@@ -18,6 +18,8 @@ public class MovieDTO {
 
 	private String country;
 	
+	private Integer movieId;
+	
 
 
 	public String getTitle() {
@@ -68,5 +70,14 @@ public class MovieDTO {
 		this.country = country;
 	}
 
+	public Integer getMovieId() {
+		return movieId;
+	}
+
+	public void setMovieId(Integer movieId) {
+		this.movieId = movieId;
+	}
+
+	
 	
 }

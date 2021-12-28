@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.movie.demo.domain.CinemaSeat;
 import com.movie.demo.domain.Show;
+import com.movie.demo.service.dto.ShowDTO;
 
 public interface ShowService {
 
@@ -12,11 +13,14 @@ public interface ShowService {
 
 	Show getShowById(Integer showId);
 
-	Show addShow(Show newShow);
+	Show addShow(ShowDTO showDTO);
 
 	Show updateShow(Show updatedShow, Integer showId);
 
     List<CinemaSeat> getSeatsByShowId(Integer showId);
 
     List<Show> getAllScreenings(LocalDate startDate, LocalDate endDate);
+    
+    void deleteShowById(Integer showid);
+    
 }
