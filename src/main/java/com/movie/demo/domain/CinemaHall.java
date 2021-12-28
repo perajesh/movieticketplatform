@@ -48,6 +48,7 @@ public class CinemaHall implements Serializable {
 	private Set<Show> shows;
 
 	@OneToMany(mappedBy = "cinemaHall", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private Set<CinemaSeat> cinemaSeats;
 
 	public CinemaHall() {

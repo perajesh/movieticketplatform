@@ -3,6 +3,7 @@ package com.movie.demo.service;
 import java.util.List;
 
 import com.movie.demo.domain.CinemaSeat;
+import com.movie.demo.service.dto.CinemaSeatDTO;
 
 public interface CinemaSeatService {
 
@@ -10,7 +11,7 @@ public interface CinemaSeatService {
 
 	CinemaSeat getSeatById(Integer cinemaSeatId);
 
-	CinemaSeat addSeat(CinemaSeat newSeat);
+	CinemaSeat addSeat(CinemaSeatDTO cinemaSeatDTO);
 
 	CinemaSeat updateSeat(CinemaSeat updatedSeat, Integer cinemaSeatId);
 

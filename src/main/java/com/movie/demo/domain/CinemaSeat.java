@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "tbl_cinema_seat")
 public class CinemaSeat implements Serializable {
@@ -35,8 +37,9 @@ public class CinemaSeat implements Serializable {
 	@Column(name = "type")
 	private String type;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne( optional = false)
 	@JoinColumn(name = "cinemahallid", nullable = false)
+	@JsonManagedReference
 	private CinemaHall cinemaHall;
 
 	@OneToMany(mappedBy = "cinemaSeat", cascade = CascadeType.ALL)
