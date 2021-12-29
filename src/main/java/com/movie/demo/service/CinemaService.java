@@ -13,7 +13,7 @@ public interface CinemaService {
 
 	Cinema addCinema(CinemaDTO cinemaDTO) throws Exception;
 
-	Cinema updateTheatre(Cinema updatedCinema, Integer cinemaId);
+	Cinema updateTheatre(CinemaDTO cinemaDTO, Integer cinemaId);
 
 	void deleteCinemaById(Integer cinemaId);
 }

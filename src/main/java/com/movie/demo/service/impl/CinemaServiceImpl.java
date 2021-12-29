@@ -53,11 +53,10 @@ public class CinemaServiceImpl implements CinemaService {
 	}
 
 	@Override
-	public Cinema updateTheatre(Cinema updatedCinema, Integer cinemaId) {
+	public Cinema updateTheatre(CinemaDTO cinemaDto, Integer cinemaId) {
 		Cinema cinemaDb=this.cinemaRepository.findById(cinemaId).get();
-		cinemaDb.setName(updatedCinema.getName());
-		cinemaDb.setName(null);
-		cinemaDb.setTotalCinemaHalls(cinemaId);
+		cinemaDb.setName(cinemaDto.getName());
+		cinemaDb.setTotalCinemaHalls(cinemaDto.getTotalCinemaHalls());
 		return this.cinemaRepository.save(cinemaDb);
 	}
 
