@@ -18,3 +18,7 @@ java -jar target/*.jar <br>
   cd movieticketplatform <br>
 ./mvnw spring-boot:run
 
+<h1>Db setup</h1>
+in application.properties-make below change<br>
+spring.jpa.hibernate.ddl-auto=create-drop
+
