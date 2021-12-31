@@ -2,6 +2,7 @@ package com.movie.demo.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -38,10 +39,10 @@ public class Show implements Serializable {
 	private LocalDate date;
 
 	@Column(name="starttime")
-	private LocalDate startTime;
+	private LocalDateTime startTime;
 
 	@Column(name="endtime")
-	private LocalDate endTime;
+	private LocalDateTime endTime;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "movie_id",nullable = false)
@@ -63,7 +64,7 @@ public class Show implements Serializable {
 		
 	}
 
-	public Show(Integer showId, LocalDate date, LocalDate startTime, LocalDate endTime, Movie movie,
+	public Show(Integer showId, LocalDate date, LocalDateTime startTime, LocalDateTime endTime, Movie movie,
 			CinemaHall cinemaHall) {
 		super();
 		this.showId = showId;
@@ -90,19 +91,19 @@ public class Show implements Serializable {
 		this.date = date;
 	}
 
-	public LocalDate getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDate startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDate getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDate endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 

@@ -1,10 +1,14 @@
 package com.movie.demo.service.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.Convert;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.movie.demo.config.LocalDateDeserializer;
+import com.movie.demo.config.LocalDateTimeConverter;
 import com.movie.demo.domain.CinemaHall;
 import com.movie.demo.domain.Movie;
 
@@ -12,10 +16,10 @@ public class ShowDTO {
 
 	private LocalDate date;
 
-	
-	private LocalDate endTime;
-	
-	private LocalDate startTime;
+	@Convert(converter = LocalDateTimeConverter.class)
+	private LocalDateTime endTime;
+	@Convert(converter = LocalDateTimeConverter.class)
+	private LocalDateTime startTime;
 	private MovieDTO movie;
 	private CinemaHallDTO cinemaHall;
 
@@ -27,19 +31,19 @@ public class ShowDTO {
 		this.date = date;
 	}
 
-	public LocalDate getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDate endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 
-	public LocalDate getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDate startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
